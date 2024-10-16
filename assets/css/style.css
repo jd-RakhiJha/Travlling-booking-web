@@ -97,47 +97,33 @@ nav.topnav {
 }
 
 
-
-/*here is silder css*/
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+body {
+  background-color: #f8f9fa;
 }
 
-main {
-  width: 70%;
-  height: 500px;
-  margin: auto;
-  margin-top: 100px;
-  position: relative;
-  overflow: hidden; 
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.slide-container {
-  width: 100%;
-  height: 100%;
-}
-
-.slide {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.nav{
+.login-container h2 {
   text-align: center;
-  margin-top: 15px;
+  margin-bottom: 30px;
+  font-weight: 600;
 }
 
-.nav button {
-  font-size: 25px;
-  padding: 5px;
+.btn-primary {
+  width: 100%;
+  padding: 10px;
 }
 
-
-
+.register-link {
+  text-align: center;
+  margin-top: 10px;
+}
 
 

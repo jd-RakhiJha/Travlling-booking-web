@@ -37,11 +37,14 @@ include('../db.php');
                 <label for="password">Password</label>
                 <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
             </div>
-            <div class="form-check mb-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" name="remember"> Remember me
-                </label>
+            <div class="mb-3">
+            <label for="role">Select Role:</label>
+            <select name="role" required>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select><br><br>
             </div>
+
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 
             <p class="register-link mb-0">Already have an account? <a href="userlogin.php">Login here</a></p>
@@ -58,12 +61,13 @@ include('../db.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['submit'])) {
-       # print_r($_POST);
+        # print_r($_POST);
 
         $firstname = $_POST["fname"];
         $lastname = $_POST["lname"];
         $email = $_POST["email"];
         $password = $_POST["password"];
+        $role = $_POST["role"];
 
 
         if (empty($_POST["fname"])) {
@@ -92,14 +96,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $password = $_POST["password"];
         }
 
-        $insert_queery = "INSERT INTO users(fname, lname, email, password) VALUES('$firstname', '$lastname', '$email', '$password')";
-    
+        if (empty($_POST["role"])) {
+            echo "role field is required";
+        } else {
+            $role = $_POST["role"];
+        }
+
+        $insert_queery = "INSERT INTO users(fname, lname, email, password, role) VALUES('$firstname', '$lastname', '$email', '$password', '$role')";
+
         if (mysqli_query($mysqli, $insert_queery)) {
             echo "New record created successfully";
-         } else {
+        } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
-         }
-    
+        }
     }
 }
 ?>
